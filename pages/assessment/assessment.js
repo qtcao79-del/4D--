@@ -3,6 +3,16 @@ const { QUESTIONS } = require('../../utils/questions')
 const { calculate4DScores, generateReportId } = require('../../utils/scoring')
 const { saveResult, saveProgress, getProgress, clearProgress } = require('../../utils/storage')
 
+// Fisher-Yates 洗牌：打乱数组顺序，返回新数组（不修改原数组）
+function shuffle(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 Page({
   data: {
     question: null,
@@ -17,9 +27,16 @@ Page({
   },
 
   onLoad() {
+    // 先对每一题的选项顺序做随机打乱（每题 option 顺序独立随机）
+    // 打乱后存入实例变量，保证本次答题期间顺序一致
+    this.shuffledQuestions = QUESTIONS.map(q => ({
+      ...q,
+      options: shuffle(q.options)
+    }))
+
     // 尝试恢复进度
     const saved = getProgress()
-    if (saved && saved.index > 0 && saved.index < QUESTIONS.length) {
+    if (saved && saved.index > 0 && saved.index < this.shuffledQuestions.length) {
       this.setData({
         index: saved.index,
         answers: saved.answers || [],
@@ -36,14 +53,14 @@ Page({
   },
 
   loadQuestion(idx) {
-    const q = QUESTIONS[idx]
+    const q = this.shuffledQuestions[idx]
     // 注入选项字母 A/B/C/D
     const optionsWithLetter = q.options.map((opt, i) => ({
       ...opt,
       letter: String.fromCharCode(65 + i)
     }))
     const answered = this.data.answers.length > idx
-    const progress = ((idx + (answered ? 1 : 0)) / QUESTIONS.length) * 100
+    const progress = ((idx + (answered ? 1 : 0)) / this.shuffledQuestions.length) * 100
 
     this.setData({
       question: { ...q, options: optionsWithLetter },
@@ -65,7 +82,7 @@ Page({
 
     setTimeout(() => {
       // 检查是否最后一题
-      if (index + 1 >= QUESTIONS.length) {
+      if (index + 1 >= this.shuffledQuestions.length) {
         clearProgress()
         this.finish(next)
         return
