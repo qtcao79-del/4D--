@@ -21,7 +21,7 @@
 }
 
 .back-btn {
-  font-size: 14px;
+  font-size: 16px;
   color: #86868B;
   transition: color 0.2s;
 }
@@ -32,7 +32,7 @@
 }
 
 .counter {
-  font-size: 14px;
+  font-size: 16px;
   color: #86868B;
   font-variant-numeric: tabular-nums;
 }
@@ -79,7 +79,7 @@
 
 .card-label {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   color: #86868B;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -88,7 +88,7 @@
 
 .card-scenario {
   display: block;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: #1D1D1F;
   line-height: 1.35;
@@ -126,7 +126,7 @@
   border-radius: 50%;
   background: #E5E5EA;
   color: #86868B;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -142,7 +142,7 @@
 
 .option-text {
   flex: 1;
-  font-size: 15px;
+  font-size: 17px;
   color: #1D1D1F;
   line-height: 1.5;
 }
@@ -154,7 +154,7 @@
 }
 
 .footer text {
-  font-size: 12px;
+  font-size: 14px;
   color: #C7C7CC;
 }
 
@@ -169,7 +169,7 @@
   color: #FFFFFF;
   padding: 10px 20px;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   opacity: 0;
   transition: opacity 0.3s;

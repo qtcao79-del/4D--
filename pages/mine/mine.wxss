@@ -11,7 +11,7 @@
 }
 
 .header-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: #1D1D1F;
 }
@@ -34,7 +34,7 @@
   border-radius: 26px;
   background: linear-gradient(135deg, var(--type-green), var(--type-blue));
   color: #FFFFFF;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@
 .avatar.empty {
   background: #E5E5EA;
   color: #86868B;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .profile-info {
@@ -55,7 +55,7 @@
 
 .profile-name {
   display: block;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 700;
   color: #1D1D1F;
   margin-bottom: 2px;
@@ -67,19 +67,19 @@
 
 .profile-phone {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: #86868B;
 }
 
 .profile-org {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   color: #C7C7CC;
   margin-top: 2px;
 }
 
 .logout-btn {
-  font-size: 13px;
+  font-size: 15px;
   color: #FF3B30;
   padding: 6px 14px;
   border: 1px solid #FF3B30;
@@ -88,7 +88,7 @@
 }
 
 .register-arrow {
-  font-size: 20px;
+  font-size: 22px;
   color: #007AFF;
   flex-shrink: 0;
 }
@@ -104,7 +104,7 @@
 
 .brand-name {
   display: block;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: #FFFFFF;
   margin-bottom: 4px;
@@ -112,14 +112,14 @@
 
 .brand-sub {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(255,255,255,0.7);
   margin-bottom: 12px;
 }
 
 .brand-desc {
   display: block;
-  font-size: 15px;
+  font-size: 17px;
   color: rgba(255,255,255,0.9);
   font-style: italic;
 }
@@ -139,20 +139,20 @@
 
 .stat-label {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: #86868B;
   margin-bottom: 4px;
 }
 
 .stat-value {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 700;
   color: #1D1D1F;
 }
 
 .stat-arrow {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: #007AFF;
   margin-top: 8px;
 }
@@ -165,13 +165,13 @@
 
 .version-text {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: #C7C7CC;
   margin-bottom: 4px;
 }
 
 .version-sub {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   color: #C7C7CC;
 }

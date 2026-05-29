@@ -52,21 +52,21 @@
     <text class="follow-title">关注飞昂叩启</text>
     <view class="qr-row">
       <view class="qr-item">
-        <image class="qr-img" src="/images/official-qr.png" mode="aspectFit"></image>
+        <image class="qr-img" src="/images/official-qr.jpg" mode="aspectFit"></image>
         <text class="qr-label">微信公众号</text>
       </view>
       <view class="qr-item">
-        <image class="qr-img" src="/images/video-qr.png" mode="aspectFit"></image>
+        <image class="qr-img" src="/images/video-qr.jpg" mode="aspectFit"></image>
         <text class="qr-label">视频号</text>
       </view>
     </view>
-    <text class="follow-hint">扫码关注，获取更多 4D 领导力内容</text>
+    <text class="follow-hint">关注飞昂叩启教练学院</text>
   </view>
 
   <!-- 版权 -->
   <view class="footer">
     <text>{{brand.name}}</text>
-    <text class="footer-desc">基于查理·佩勒林博士 NASA 4D 系统</text>
+    <text class="footer-desc">扫码关注，获得更多学习资讯</text>
   </view>
 
 </view>

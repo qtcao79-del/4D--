@@ -15,7 +15,7 @@
   display: inline-block;
   background: linear-gradient(135deg, #1D1D1F 0%, #3A3A3C 100%);
   color: #FFFFFF;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   padding: 6px 18px;
   border-radius: 20px;
@@ -25,7 +25,7 @@
 
 .hero-title {
   display: block;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: #1D1D1F;
   margin-bottom: 10px;
@@ -34,7 +34,7 @@
 
 .hero-desc {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   color: #86868B;
   line-height: 1.6;
 }
@@ -53,7 +53,7 @@
 
 .form-hint {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: #86868B;
   margin-bottom: 24px;
   text-align: center;
@@ -66,7 +66,7 @@
 
 .input-label {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #1D1D1F;
   margin-bottom: 8px;
@@ -79,7 +79,7 @@
 .optional {
   color: #C7C7CC;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .input-field {
@@ -88,7 +88,7 @@
   background: #F5F5F7;
   border-radius: 12px;
   padding: 0 16px;
-  font-size: 15px;
+  font-size: 17px;
   color: #1D1D1F;
   box-sizing: border-box;
 }
@@ -108,7 +108,7 @@
 
 .error-msg text {
   color: #FF3B30;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 /* 提交按钮 */
@@ -117,7 +117,7 @@
   height: 50px;
   background: linear-gradient(135deg, #1D1D1F 0%, #3A3A3C 100%);
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   border-radius: 14px;
   margin-top: 8px;
@@ -138,6 +138,6 @@
 }
 
 .skip-link {
-  font-size: 14px;
+  font-size: 16px;
   color: #86868B;
 }

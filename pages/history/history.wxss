@@ -14,13 +14,13 @@
 }
 
 .header-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: #1D1D1F;
 }
 
 .header-clear {
-  font-size: 14px;
+  font-size: 16px;
   color: #EF4444;
 }
 
@@ -38,13 +38,13 @@
 }
 
 .empty-text {
-  font-size: 16px;
+  font-size: 18px;
   color: #86868B;
   margin-bottom: 4px;
 }
 
 .empty-sub {
-  font-size: 13px;
+  font-size: 15px;
   color: #C7C7CC;
 }
 
@@ -83,17 +83,17 @@
 }
 
 .item-type {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: #1D1D1F;
 }
 
 .item-date {
-  font-size: 12px;
+  font-size: 14px;
   color: #C7C7CC;
 }
 
 .item-arrow {
-  font-size: 16px;
+  font-size: 18px;
   color: #C7C7CC;
 }
