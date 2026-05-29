@@ -1,0 +1,15 @@
+# 微信开发者工具
+miniprogram_npm/
+.DS_Store
+
+# 依赖
+node_modules/
+
+# 编译产物
+*.zip
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,49 @@
+<!-- 我的页面 -->
+<view class="page">
+
+  <view class="header">
+    <text class="header-title">我的</text>
+  </view>
+
+  <!-- 用户档案 -->
+  <view class="profile-card" wx:if="{{isLoggedIn}}">
+    <view class="avatar">{{user.name[0]}}</view>
+    <view class="profile-info">
+      <text class="profile-name">{{user.name}}</text>
+      <text class="profile-phone">{{user.phone}}</text>
+      <text class="profile-org" wx:if="{{user.company}}">{{user.company}}{{user.role ? ' · ' + user.role : ''}}</text>
+    </view>
+    <view class="logout-btn" bindtap="handleLogout">退出</view>
+  </view>
+
+  <!-- 未注册提示 -->
+  <view class="profile-card" wx:else bindtap="goRegister">
+    <view class="avatar empty">?</view>
+    <view class="profile-info">
+      <text class="profile-name empty-text">注册你的档案</text>
+      <text class="profile-phone">保存测评记录，随时回顾</text>
+    </view>
+    <view class="register-arrow">→</view>
+  </view>
+
+  <!-- 品牌信息 -->
+  <view class="brand-card">
+    <text class="brand-name">飞昂叩启教练学院</text>
+    <text class="brand-sub">查理·佩勒林博士 4D 领导力系统</text>
+    <text class="brand-desc">8 分钟，看见你的天生特质</text>
+  </view>
+
+  <!-- 统计 -->
+  <view class="stat-card" bindtap="goHistory">
+    <text class="stat-label">测评次数</text>
+    <text class="stat-value">{{historyCount}}</text>
+    <text class="stat-arrow">查看历史 →</text>
+  </view>
+
+  <!-- 版本 -->
+  <view class="version-card">
+    <text class="version-text">v{{appVersion}}</text>
+    <text class="version-sub">基于 GitHub vibe-coding-compass-86 构建</text>
+  </view>
+
+</view>

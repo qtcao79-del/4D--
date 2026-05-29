@@ -1,0 +1,177 @@
+/* 我的页面样式 */
+
+.page {
+  min-height: 100vh;
+  background: #F5F5F7;
+  padding-bottom: 40px;
+}
+
+.header {
+  padding: 20px 24px 12px;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1D1D1F;
+}
+
+/* 用户档案卡片 */
+.profile-card {
+  margin: 12px 16px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, var(--type-green), var(--type-blue));
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar.empty {
+  background: #E5E5EA;
+  color: #86868B;
+  font-size: 20px;
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name {
+  display: block;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1D1D1F;
+  margin-bottom: 2px;
+}
+
+.profile-name.empty-text {
+  color: #007AFF;
+}
+
+.profile-phone {
+  display: block;
+  font-size: 13px;
+  color: #86868B;
+}
+
+.profile-org {
+  display: block;
+  font-size: 12px;
+  color: #C7C7CC;
+  margin-top: 2px;
+}
+
+.logout-btn {
+  font-size: 13px;
+  color: #FF3B30;
+  padding: 6px 14px;
+  border: 1px solid #FF3B30;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.register-arrow {
+  font-size: 20px;
+  color: #007AFF;
+  flex-shrink: 0;
+}
+
+/* 品牌卡片 */
+.brand-card {
+  margin: 12px 16px;
+  background: linear-gradient(135deg, #1D1D1F, #3A3A3C);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.brand-name {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.brand-sub {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
+}
+
+.brand-desc {
+  display: block;
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  font-style: italic;
+}
+
+/* 统计卡片 */
+.stat-card {
+  margin: 12px 16px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.stat-card:active {
+  background: #F5F5F7;
+}
+
+.stat-label {
+  display: block;
+  font-size: 13px;
+  color: #86868B;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1D1D1F;
+}
+
+.stat-arrow {
+  display: block;
+  font-size: 13px;
+  color: #007AFF;
+  margin-top: 8px;
+}
+
+/* 版本 */
+.version-card {
+  margin: 24px 16px;
+  text-align: center;
+}
+
+.version-text {
+  display: block;
+  font-size: 13px;
+  color: #C7C7CC;
+  margin-bottom: 4px;
+}
+
+.version-sub {
+  display: block;
+  font-size: 11px;
+  color: #C7C7CC;
+}

@@ -1,0 +1,103 @@
+/* color-matrix 组件样式 */
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  aspect-ratio: 1;
+}
+
+.matrix-cell {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid #E5E5EA;
+  transition: transform 0.3s;
+}
+
+.matrix-primary {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  z-index: 1;
+}
+
+/* 水位 */
+.water-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0 0 20px 20px;
+}
+
+.water-animate {
+  transition: height 1s ease-out;
+}
+
+/* 皇冠 */
+.crown {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 22px;
+  z-index: 2;
+  animation: crownFloat 2.4s ease-in-out infinite;
+}
+
+/* 内容 */
+.matrix-content {
+  position: relative;
+  height: 100%;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cell-jung {
+  font-size: 9px;
+  color: rgba(29,29,31,0.6);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.cell-score-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.cell-score {
+  font-size: 38px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.cell-pct {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.cell-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.cell-subtitle {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+@keyframes crownFloat {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}

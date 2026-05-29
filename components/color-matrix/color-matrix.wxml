@@ -1,0 +1,23 @@
+<!-- color-matrix 组件 —— 2x2 四色能量水位矩阵 -->
+<view class="matrix-grid">
+  <view wx:for="{{data}}" wx:key="key"
+    class="matrix-cell {{item.isPrimary ? 'matrix-primary' : ''}}"
+  >
+    <!-- 水位层 -->
+    <view class="water-fill {{animated ? 'water-animate' : ''}}"
+      style="height: {{animated ? item.score + '%' : '0%'}}; background: linear-gradient(to top, {{item.color}}, {{item.color}}aa);"
+    ></view>
+    <!-- 皇冠 -->
+    <view class="crown" wx:if="{{item.isPrimary}}">👑</view>
+    <!-- 内容层 -->
+    <view class="matrix-content">
+      <text class="cell-jung">{{item.jungShort}}</text>
+      <view class="cell-score-wrap">
+        <text class="cell-score">{{item.score}}</text>
+        <text class="cell-pct">%</text>
+      </view>
+      <text class="cell-name">{{item.name}}</text>
+      <text class="cell-subtitle">{{item.subtitle}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,141 @@
+/* 全局样式 —— Apple 极简设计 + 四色能量系统 */
+
+/* CSS 变量 —— 颜色令牌 */
+page {
+  --type-green: #4ade80;
+  --type-yellow: #facc15;
+  --type-blue: #3b82f6;
+  --type-orange: #f97316;
+
+  --bg: #F5F5F7;
+  --fg: #1D1D1F;
+  --card-bg: #FFFFFF;
+  --muted-bg: #F0F0F2;
+  --muted-fg: #86868B;
+  --border: #E5E5EA;
+  --radius: 16px;
+  --shadow-soft: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
+
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 通用组件 ===== */
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 12px 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card-soft {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 24px 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+
+.btn-primary {
+  background: #1D1D1F;
+  color: #FFFFFF;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background: var(--muted-bg);
+  color: var(--fg);
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 28px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--fg);
+  padding: 24px 16px 12px;
+  letter-spacing: -0.3px;
+}
+
+/* ===== 排版工具 ===== */
+
+.text-muted { color: var(--muted-fg); }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-balance { text-wrap: balance; }
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== 动画 ===== */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutLeft {
+  to { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes crownFloat {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}
+
+@keyframes waterRise {
+  from { height: 0%; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.crown-float {
+  animation: crownFloat 2.4s ease-in-out infinite;
+}

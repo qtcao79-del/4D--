@@ -1,0 +1,178 @@
+<!-- 结果页 —— 四色能量矩阵 + 完整 AMBR 报告 -->
+<view class="page" wx:if="{{primary}}">
+
+  <!-- Header -->
+  <view class="result-header fade-in-up">
+    <text class="header-label">Your 4D Energy Matrix</text>
+    <text class="header-title">你的主导色是</text>
+    <text class="header-type" style="color: {{primaryColor}}">{{primary.name}}</text>
+    <text class="header-tags">{{primary.tags[0]}} · {{primary.tags[1]}}</text>
+  </view>
+
+  <!-- 2x2 能量矩阵 -->
+  <view class="matrix-section">
+    <view class="matrix-grid">
+      <view wx:for="{{matrixData}}" wx:key="key"
+        class="matrix-cell {{item.isPrimary ? 'matrix-primary' : ''}}"
+      >
+        <!-- 水位 -->
+        <view class="water-fill {{animated ? 'water-animate' : ''}}"
+          style="height: {{animated ? item.score + '%' : '0%'}}; background: linear-gradient(to top, {{item.color}}, {{item.color}}aa);"
+        ></view>
+        <!-- 皇冠 -->
+        <view class="crown" wx:if="{{item.isPrimary}}">👑</view>
+        <!-- 内容 -->
+        <view class="matrix-content">
+          <text class="matrix-jung">{{item.jungShort}}</text>
+          <view class="matrix-score-wrap">
+            <text class="matrix-score">{{item.score}}</text>
+            <text class="matrix-pct">%</text>
+          </view>
+          <text class="matrix-name">{{item.name}}</text>
+          <text class="matrix-subtitle">{{item.subtitle}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详细报告 -->
+  <view class="report-section">
+
+    <!-- 大白话画像 -->
+    <view class="report-card">
+      <view class="report-card-header">
+        <view class="report-accent" style="background: {{primaryColor}}"></view>
+        <text class="report-label">大白话画像</text>
+      </view>
+      <text class="report-body">{{primary.portrait}}</text>
+    </view>
+
+    <!-- 底层驱动 -->
+    <view class="report-card">
+      <view class="report-card-header">
+        <view class="report-accent" style="background: {{primaryColor}}"></view>
+        <text class="report-label">底层驱动</text>
+      </view>
+      <text class="report-body">{{primary.drive}}</text>
+    </view>
+
+    <!-- 日常高光表现 -->
+    <view class="report-card">
+      <text class="report-label mb-12">日常高光表现</text>
+      <view wx:for="{{primary.highlights}}" wx:key="*this" class="highlight-item">
+        <view class="highlight-dot" style="background: {{primaryColor}}"></view>
+        <text class="highlight-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 压力盲点 + 破局点 -->
+    <view class="report-card blindspot-card" style="border-color: {{primaryColor}}; background: {{primaryColor}}10;">
+      <text class="report-label">压力盲点</text>
+      <text class="report-body mb-20">{{primary.blindspot}}</text>
+      <view class="divider"></view>
+      <text class="report-label mt-20">专家破局点</text>
+      <text class="report-body fw-600">{{primary.breakthrough}}</text>
+    </view>
+
+    <!-- AMBR 能量转化路径 -->
+    <view class="report-card">
+      <text class="report-label">AMBR 能量转化路径</text>
+      <text class="ambr-subtitle">Attention → Mindset → Behavior → Results</text>
+      <view class="ambr-grid">
+        <view class="ambr-item">
+          <view class="ambr-badge" style="background: {{primaryColor}}">A</view>
+          <text class="ambr-item-label">Attention 注意力</text>
+          <text class="ambr-item-body">{{primary.ambr.a}}</text>
+        </view>
+        <view class="ambr-item">
+          <view class="ambr-badge" style="background: {{primaryColor}}">M</view>
+          <text class="ambr-item-label">Mindset 信念</text>
+          <text class="ambr-item-body">{{primary.ambr.m}}</text>
+        </view>
+        <view class="ambr-item">
+          <view class="ambr-badge" style="background: {{primaryColor}}">B</view>
+          <text class="ambr-item-label">Behavior 行为</text>
+          <text class="ambr-item-body">{{primary.ambr.b}}</text>
+        </view>
+        <view class="ambr-item">
+          <view class="ambr-badge" style="background: {{primaryColor}}">R</view>
+          <text class="ambr-item-label">Results 成果</text>
+          <text class="ambr-item-body">{{primary.ambr.r}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 你的职场拼图 -->
+    <view class="report-card">
+      <view class="report-card-header">
+        <view class="report-accent" style="background: {{primaryColor}}"></view>
+        <text class="report-label">你的职场拼图</text>
+      </view>
+      <text class="report-body">{{primary.partner}}</text>
+    </view>
+
+    <!-- 口头禅 + 雷区 -->
+    <view class="two-col">
+      <view class="report-card half-card">
+        <text class="report-label">口头禅</text>
+        <text class="report-body italic">{{primary.mantra}}</text>
+      </view>
+      <view class="report-card half-card danger-card">
+        <text class="report-label danger-text">听觉雷区</text>
+        <text class="report-body italic">{{primary.trigger}}</text>
+      </view>
+    </view>
+
+    <!-- 使用说明书 -->
+    <view class="report-card">
+      <text class="report-label fz-18 fw-700">使用说明书</text>
+      <text class="manual-hint">把这一页发给与你共事的人</text>
+      <view class="manual-grid">
+        <view class="manual-col">
+          <text class="manual-title" style="color: {{primaryColor}}">✓ 要做法</text>
+          <view wx:for="{{primary.manual.do}}" wx:key="*this">
+            <text class="manual-item">{{item}}</text>
+          </view>
+        </view>
+        <view class="manual-col">
+          <text class="manual-title danger-text">✗ 不要犯错</text>
+          <view wx:for="{{primary.manual.dont}}" wx:key="*this">
+            <text class="manual-item">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部操作 -->
+    <view class="result-actions">
+      <button class="btn-primary" bindtap="retake">重新测评</button>
+      <button class="btn-secondary" bindtap="goHome">返回首页</button>
+      <text class="report-time">报告生成时间 · {{createdAt}}</text>
+      <text class="report-id">#{{reportId}}</text>
+    </view>
+
+    <!-- 关注我们 -->
+    <view class="follow-section">
+      <text class="follow-title">关注飞昂叩启</text>
+      <view class="qr-row">
+        <view class="qr-item">
+          <image class="qr-img" src="/images/official-qr.png" mode="aspectFit"></image>
+          <text class="qr-label">微信公众号</text>
+        </view>
+        <view class="qr-item">
+          <image class="qr-img" src="/images/video-qr.png" mode="aspectFit"></image>
+          <text class="qr-label">视频号</text>
+        </view>
+      </view>
+      <text class="follow-hint">扫码关注，获取更多 4D 领导力内容</text>
+    </view>
+
+    <!-- 版权 -->
+    <view class="footer">
+      <text>飞昂叩启教练学院</text>
+      <text class="footer-desc">基于查理·佩勒林博士 NASA 4D 系统</text>
+    </view>
+
+  </view>
+
+</view>

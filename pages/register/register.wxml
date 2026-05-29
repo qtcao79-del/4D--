@@ -1,0 +1,84 @@
+<!-- 注册页 —— 飞昂叩启 4D 领导力系统 -->
+<view class="page">
+
+  <!-- Hero -->
+  <view class="hero">
+    <view class="brand-badge">{{brand.name}}</view>
+    <text class="hero-title">欢迎来到 4D 领导力系统</text>
+    <text class="hero-desc">
+      基于查理·佩勒林博士 NASA 4D 系统，<br/>
+      探索你的天生底层能量结构
+    </text>
+  </view>
+
+  <!-- 表单 -->
+  <view class="form-section">
+    <view class="form-card">
+
+      <text class="form-hint">请填写信息，测评结果将保存到你的档案</text>
+
+      <!-- 姓名 -->
+      <view class="input-group">
+        <text class="input-label">姓名 <text class="required">*</text></text>
+        <input class="input-field"
+          placeholder="请输入您的姓名"
+          value="{{name}}"
+          bindinput="onNameInput"
+          maxlength="20"
+          auto-focus
+        />
+      </view>
+
+      <!-- 手机号 -->
+      <view class="input-group">
+        <text class="input-label">手机号 <text class="required">*</text></text>
+        <input class="input-field"
+          type="number"
+          placeholder="请输入手机号码"
+          value="{{phone}}"
+          bindinput="onPhoneInput"
+          maxlength="11"
+        />
+      </view>
+
+      <!-- 公司 -->
+      <view class="input-group">
+        <text class="input-label">公司 / 组织 <text class="optional">选填</text></text>
+        <input class="input-field"
+          placeholder="如：飞昂叩启教练学院"
+          value="{{company}}"
+          bindinput="onCompanyInput"
+          maxlength="50"
+        />
+      </view>
+
+      <!-- 角色 -->
+      <view class="input-group">
+        <text class="input-label">职位 / 角色 <text class="optional">选填</text></text>
+        <input class="input-field"
+          placeholder="如：产品经理、教练、HR"
+          value="{{role}}"
+          bindinput="onRoleInput"
+          maxlength="30"
+        />
+      </view>
+
+      <!-- 错误提示 -->
+      <view class="error-msg" wx:if="{{errorMsg}}">
+        <text>{{errorMsg}}</text>
+      </view>
+
+      <!-- 提交 -->
+      <button class="submit-btn" bindtap="handleSubmit" loading="{{loading}}">
+        开启我的 4D 之旅
+      </button>
+
+      <!-- 跳过 -->
+      <view class="skip-wrap" bindtap="handleSkip">
+        <text class="skip-link">先体验，稍后注册</text>
+      </view>
+
+    </view>
+  </view>
+
+</view>

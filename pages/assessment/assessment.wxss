@@ -1,0 +1,191 @@
+/* 答题页样式 */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #F5F5F7;
+}
+
+/* ===== Header ===== */
+.header {
+  padding: 16px 24px 12px;
+  background: #FFFFFF;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.back-btn {
+  font-size: 14px;
+  color: #86868B;
+  transition: color 0.2s;
+}
+
+.back-btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.counter {
+  font-size: 14px;
+  color: #86868B;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: #E5E5EA;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #1D1D1F;
+  border-radius: 3px;
+  transition: width 0.4s ease-out;
+}
+
+/* ===== Card ===== */
+.card-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+.card {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid #E5E5EA;
+}
+
+.card-enter {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.card-exit {
+  animation: slideOutLeft 0.3s ease-in forwards;
+}
+
+.card-label {
+  display: block;
+  font-size: 11px;
+  color: #86868B;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.card-scenario {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1D1D1F;
+  line-height: 1.35;
+  margin-bottom: 28px;
+  letter-spacing: -0.3px;
+}
+
+/* ===== Options ===== */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #F5F5F7;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.option:active {
+  background: #E5E5EA;
+  border-color: #1D1D1F;
+  transform: scale(0.99);
+}
+
+.option-letter {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #E5E5EA;
+  color: #86868B;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.option:active .option-letter {
+  background: #1D1D1F;
+  color: #FFFFFF;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 15px;
+  color: #1D1D1F;
+  line-height: 1.5;
+}
+
+/* ===== Footer ===== */
+.footer {
+  padding: 20px 24px 32px;
+  text-align: center;
+}
+
+.footer text {
+  font-size: 12px;
+  color: #C7C7CC;
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: #1D1D1F;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.toast-show {
+  opacity: 1;
+}
+
+/* ===== 动画 ===== */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutLeft {
+  to { transform: translateX(-100%); opacity: 0; }
+}

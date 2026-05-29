@@ -1,0 +1,46 @@
+<!-- 答题页 —— 24 道强迫选择题 -->
+<view class="page">
+
+  <!-- 顶部进度 -->
+  <view class="header">
+    <view class="header-row">
+      <text class="back-btn {{canGoBack ? '' : 'disabled'}}" bindtap="handleBack">← 上一题</text>
+      <text class="counter">{{index + 1}} / {{total}}</text>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progress}}%;"></view>
+    </view>
+  </view>
+
+  <!-- 题目卡片 -->
+  <view class="card-area">
+    <view class="card {{animClass}}" wx:if="{{question}}">
+      <text class="card-label">Scenario · 情境</text>
+      <text class="card-scenario">{{question.scenario}}</text>
+
+      <view class="options">
+        <view
+          wx:for="{{question.options}}"
+          wx:key="text"
+          class="option"
+          data-type="{{item.type}}"
+          bindtap="handleSelect"
+        >
+          <view class="option-letter">{{item.letter}}</view>
+          <text class="option-text">{{item.text}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="footer">
+    <text>凭直觉选择最贴近你日常状态的那一项</text>
+  </view>
+
+  <!-- Toast -->
+  <view class="toast {{showToast ? 'toast-show' : ''}}" wx:if="{{showToast}}">
+    <text>{{toastText}}</text>
+  </view>
+
+</view>
