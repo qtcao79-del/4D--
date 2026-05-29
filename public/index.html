@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>4D 领导力测评 · 飞昂叩启教练学院</title>
+<style>
+/* ========== Reset & Base ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",sans-serif;background:#f5f5f7;color:#1d1d1f;-webkit-font-smoothing:antialiased;line-height:1.5}
+.page{display:none;min-height:100vh;padding-bottom:40px}
+.page.active{display:block}
+
+/* ========== Common ========== */
+.btn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:14px;padding:16px 32px;font-size:17px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#1d1d1f;color:#fff}
+.btn-primary:hover{background:#333}
+.btn-outline{background:#fff;color:#1d1d1f;border:1.5px solid #d2d2d7}
+.btn-outline:hover{background:#f5f5f7}
+.btn-block{width:100%}
+.btn-danger{background:#ff3b30;color:#fff}
+.btn-sm{padding:10px 20px;font-size:15px}
+
+/* ========== Page: Home ========== */
+.home-header{background:linear-gradient(135deg,#000 0%,#1a1a2e 50%,#16213e 100%);padding:60px 24px 48px;text-align:center;color:#fff}
+.home-logo{font-size:40px;margin-bottom:12px}
+.home-title{font-size:32px;font-weight:700;margin-bottom:6px;letter-spacing:-0.5px}
+.home-subtitle{font-size:17px;opacity:.7;margin-bottom:24px}
+.home-body{padding:24px 24px 0}
+.home-card{background:#fff;border-radius:20px;padding:28px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.home-card h3{font-size:19px;font-weight:600;margin-bottom:8px;color:#1d1d1f}
+.home-card p{font-size:15px;color:#6e6e73;margin-bottom:6px}
+.home-card .highlight{color:#007aff;font-weight:600}
+.home-action{padding:24px}
+
+/* QR Section */
+.qr-section{padding:24px;text-align:center}
+.qr-title{font-size:17px;font-weight:600;color:#1d1d1f;margin-bottom:6px}
+.qr-subtitle{font-size:14px;color:#86868b;margin-bottom:20px}
+.qr-row{display:flex;justify-content:center;gap:32px}
+.qr-item{text-align:center}
+.qr-item img{width:120px;height:120px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.qr-label{display:block;font-size:13px;color:#86868b;margin-top:8px}
+.follow-hint{font-size:13px;color:#007aff;margin-top:8px}
+.home-footer{text-align:center;padding:16px;font-size:13px;color:#aeaeb2}
+
+/* ========== Page: Register ========== */
+.reg-header{background:#000;padding:48px 24px 40px;text-align:center}
+.reg-header .hero-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:8px}
+.reg-header .hero-sub{font-size:15px;color:rgba(255,255,255,.6)}
+.reg-body{padding:24px}
+.input-group{margin-bottom:20px}
+.input-group label{display:block;font-size:15px;font-weight:600;color:#1d1d1f;margin-bottom:8px}
+.input-group input{width:100%;padding:14px 16px;border:1.5px solid #d2d2d7;border-radius:12px;font-size:16px;font-family:inherit;transition:border-color .2s}
+.input-group input:focus{outline:none;border-color:#007aff}
+.dim-tip{font-size:12px;color:#aeaeb2;margin-top:4px}
+.reg-footer{padding:0 24px 40px}
+
+/* ========== Page: Assessment ========== */
+.quiz-header{padding:20px 24px;background:#fff;position:sticky;top:0;z-index:10;border-bottom:1px solid #f0f0f0}
+.quiz-header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.quiz-back{font-size:15px;color:#007aff;cursor:pointer}
+.quiz-counter{font-size:14px;color:#86868b;font-weight:600}
+.progress-bar{height:4px;background:#e5e5ea;border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:#007aff;transition:width .3s ease;border-radius:2px}
+.quiz-body{padding:24px}
+.quiz-card{background:#fff;border-radius:20px;padding:32px 24px;box-shadow:0 2px 12px rgba(0,0,0,.04);animation:cardIn .35s ease}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.quiz-label{font-size:13px;color:#007aff;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;display:block}
+.quiz-scenario{font-size:20px;font-weight:600;color:#1d1d1f;margin-bottom:28px;line-height:1.4}
+.quiz-option{display:flex;align-items:flex-start;padding:16px;margin-bottom:10px;background:#f5f5f7;border-radius:14px;cursor:pointer;transition:all .15s}
+.quiz-option:hover{background:#e8e8ed}
+.quiz-option:active{transform:scale(.98)}
+.opt-letter{width:32px;height:32px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d1d1f;flex-shrink:0;margin-right:14px;margin-top:2px}
+.opt-text{font-size:16px;color:#1d1d1f;line-height:1.45}
+.quiz-footer{padding:0 24px 32px;text-align:center;font-size:13px;color:#aeaeb2}
+
+/* ========== Page: Result ========== */
+.result-header{background:#000;padding:32px 24px 24px;text-align:center;color:#fff}
+.result-header h2{font-size:26px;margin-bottom:4px}
+.result-header .type-name{font-size:15px;opacity:.8}
+.result-type-badge{display:inline-block;padding:6px 18px;border-radius:20px;font-size:14px;font-weight:600;margin-top:8px;color:#1d1d1f}
+.matrix-section{background:#fff;margin:20px;border-radius:20px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.matrix-title{font-size:17px;font-weight:600;text-align:center;margin-bottom:6px}
+.matrix-subtitle{font-size:13px;color:#86868b;text-align:center;margin-bottom:16px}
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.matrix-cell{border-radius:16px;padding:20px 14px;text-align:center;position:relative;overflow:hidden;min-height:100px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.matrix-cell .cell-type{font-size:14px;font-weight:700;margin-bottom:4px}
+.matrix-cell .cell-name{font-size:12px;opacity:.8;margin-bottom:8px}
+.matrix-cell .cell-pct{font-size:28px;font-weight:800}
+.matrix-cell.green{background:#e8f5e9;color:#1b5e20}
+.matrix-cell.yellow{background:#fffde7;color:#f57f17}
+.matrix-cell.blue{background:#e3f2fd;color:#0d47a1}
+.matrix-cell.orange{background:#fff3e0;color:#e65100}
+.matrix-cell.primary{border:3px solid #000;border-radius:20px}
+.crown{position:absolute;top:-4px;right:10px;font-size:18px;animation:float 2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.profile-section{background:#fff;margin:0 20px 20px;border-radius:20px;padding:24px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.profile-section h3{font-size:19px;font-weight:700;margin-bottom:4px}
+.profile-section .subtitle{font-size:13px;color:#86868b;margin-bottom:4px}
+.profile-section .row-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#aeaeb2;font-weight:600;margin:16px 0 4px}
+.profile-section .row-value{font-size:15px;color:#1d1d1f;line-height:1.55}
+.highlight-list{margin-top:8px}
+.highlight-list li{font-size:15px;color:#1d1d1f;margin-bottom:8px;padding-left:4px}
+
+/* ========== Page: History ========== */
+.history-header{background:#000;padding:32px 24px;color:#fff;text-align:center}
+.history-header h2{font-size:24px}
+.history-list{padding:20px}
+.history-item{background:#fff;border-radius:16px;padding:18px 20px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.03);cursor:pointer}
+.history-item:hover{background:#f5f5f7}
+.history-date{font-size:13px;color:#86868b}
+.history-type{font-size:15px;font-weight:600}
+.history-empty{text-align:center;padding:60px 24px;color:#86868b;font-size:15px}
+
+/* ========== Page: Mine ========== */
+.mine-header{background:#000;padding:48px 24px;color:#fff;text-align:center}
+.mine-avatar{width:64px;height:64px;background:rgba(255,255,255,.15);border-radius:32px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.mine-name{font-size:22px;font-weight:600}
+.mine-phone{font-size:14px;opacity:.6;margin:4px 0}
+.mine-body{padding:20px}
+.mine-card{background:#fff;border-radius:16px;padding:20px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.mine-card-title{font-size:15px;font-weight:600;margin-bottom:4px}
+.mine-card-sub{font-size:13px;color:#86868b}
+
+/* ========== Toast ========== */
+.toast{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:#1d1d1f;color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;z-index:100;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+<!-- ===== HOME ===== -->
+<section class="page active" id="page-home">
+  <div class="home-header">
+    <div class="home-logo">🧭</div>
+    <h1 class="home-title">4D 领导力测评</h1>
+    <p class="home-subtitle">基于查理·佩勒林博士 NASA 4D 系统<br>发现你的核心领导力色彩</p>
+  </div>
+  <div class="home-body">
+    <div class="home-card">
+      <h3>24 道强迫选择题</h3>
+      <p>在四个选项中，凭直觉选择<span class="highlight">最贴近</span>你日常状态的那一项</p>
+    </div>
+    <div class="home-card">
+      <h3>六大维度深度报告</h3>
+      <p>天性天赋、压力黑洞、突破方向、AMBR 修炼法……</p>
+    </div>
+  </div>
+  <div class="home-action">
+    <button class="btn btn-primary btn-block" onclick="navTo('register')">开始测评</button>
+  </div>
+  <div class="home-footer">
+    <p>扫码关注，获得更多学习资讯</p>
+  </div>
+</section>
+
+<!-- ===== REGISTER ===== -->
+<section class="page" id="page-register">
+  <div class="reg-header">
+    <h1 class="hero-title">欢迎来到 4D 领导力系统</h1>
+    <p class="hero-sub">填写信息，开始探索你的领导力色彩</p>
+  </div>
+  <div class="reg-body">
+    <div class="input-group">
+      <label>姓名 *</label>
+      <input type="text" id="reg-name" placeholder="你的名字" maxlength="20">
+    </div>
+    <div class="input-group">
+      <label>手机号 *</label>
+      <input type="tel" id="reg-phone" placeholder="用于查看历史记录" maxlength="11">
+      <div class="dim-tip">仅用于关联你的测评记录</div>
+    </div>
+    <div class="input-group">
+      <label>公司 / 组织</label>
+      <input type="text" id="reg-company" placeholder="选填" maxlength="50">
+    </div>
+    <div class="input-group">
+      <label>角色</label>
+      <input type="text" id="reg-role" placeholder="例如：团队管理者 / HR / 教练" maxlength="30">
+    </div>
+  </div>
+  <div class="reg-footer">
+    <button class="btn btn-primary btn-block" onclick="doRegister()">开始我的测评</button>
+    <button class="btn btn-outline btn-block" style="margin-top:12px" onclick="navTo('home')">返回首页</button>
+  </div>
+</section>
+
+<!-- ===== ASSESSMENT ===== -->
+<section class="page" id="page-assessment">
+  <div class="quiz-header">
+    <div class="quiz-header-row">
+      <span class="quiz-back" onclick="prevQuestion()">← 上一题</span>
+      <span class="quiz-counter" id="quiz-counter">1 / 24</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="quiz-progress" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="quiz-body" id="quiz-body"></div>
+  <div class="quiz-footer">凭直觉选择最贴近你日常状态的那一项</div>
+</section>
+
+<!-- ===== RESULT ===== -->
+<section class="page" id="page-result">
+  <div id="result-content"></div>
+</section>
+
+<!-- ===== HISTORY ===== -->
+<section class="page" id="page-history">
+  <div class="history-header"><h2>测评历史</h2></div>
+  <div class="history-list" id="history-list"></div>
+</section>
+
+<!-- ===== MINE ===== -->
+<section class="page" id="page-mine">
+  <div class="mine-header">
+    <div id="mine-avatar" class="mine-avatar">🧭</div>
+    <div class="mine-name" id="mine-name">未登录</div>
+    <div class="mine-phone" id="mine-info"></div>
+  </div>
+  <div class="mine-body">
+    <div class="mine-card" onclick="navTo('history')" style="cursor:pointer">
+      <div class="mine-card-title">测评历史</div>
+      <div class="mine-card-sub">查看所有历史测评报告</div>
+    </div>
+    <div class="mine-card">
+      <div class="mine-card-title">关于 4D 领导力</div>
+      <div class="mine-card-sub">查理·佩勒林博士 NASA 4D 系统 · 飞昂叩启教练学院</div>
+    </div>
+    <button class="btn btn-danger btn-block" style="margin-top:16px" onclick="doLogout()">退出登录</button>
+  </div>
+</section>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ========== DATA LAYER ==========
+const QUESTIONS = [
+  { id:1, scenario:'团队周一早会，你最关心的是：', options:[
+    {text:'大家这周的情绪状态和动力如何',type:'GREEN'},{text:'团队气氛是否融洽，有没有人被边缘化',type:'YELLOW'},{text:'本周战略方向和长期目标对齐了吗',type:'BLUE'},{text:'本周交付节点和具体责任人是谁',type:'ORANGE'}]},
+  { id:2, scenario:'下属把项目搞砸了，你的第一反应是：', options:[
+    {text:'先关心 Ta 的情绪，问「你还好吗」',type:'GREEN'},{text:'召集大家一起想办法，别让 Ta 孤立无援',type:'YELLOW'},{text:'复盘根因，找出系统性的逻辑漏洞',type:'BLUE'},{text:'立刻止损，明确接下来的 Deadline 和动作',type:'ORANGE'}]},
+  { id:3, scenario:'开会时陷入争论，你最受不了的是：', options:[
+    {text:'有人冷血地否定别人的真诚付出',type:'GREEN'},{text:'气氛剑拔弩张、要散伙的感觉',type:'YELLOW'},{text:'讨论缺乏逻辑、全凭情绪和拍脑袋',type:'BLUE'},{text:'没有结论、没有 Action、白白浪费时间',type:'ORANGE'}]},
+  { id:4, scenario:'你写微信 / 邮件的风格更接近：', options:[
+    {text:'温暖、走心，会加表情包关心对方',type:'GREEN'},{text:'客气、礼貌，照顾每个人的感受',type:'YELLOW'},{text:'结构化、有逻辑层次，论点清晰',type:'BLUE'},{text:'短、平、快，直接说结论和要求',type:'ORANGE'}]},
+  { id:5, scenario:'面对一份新工作，你最先评估的是：', options:[
+    {text:'这份工作能不能成就别人、有意义吗',type:'GREEN'},{text:'团队氛围如何，同事好不好相处',type:'YELLOW'},{text:'这件事的天花板和长期想象空间',type:'BLUE'},{text:'薪资、KPI、晋升路径是否清晰',type:'ORANGE'}]},
+  { id:6, scenario:'压力山大时，你最容易做的事是：', options:[
+    {text:'为了不伤和气，委屈自己默默扛',type:'GREEN'},{text:'和稀泥折中，谁也不得罪',type:'YELLOW'},{text:'变得毒舌、独裁，觉得别人都跟不上',type:'BLUE'},{text:'微观管理，死死盯着每一个细节',type:'ORANGE'}]},
+  { id:7, scenario:'下属来汇报工作，你最希望听到：', options:[
+    {text:'Ta 在这件事上的真实感受和成长',type:'GREEN'},{text:'团队协作过程中的温馨小故事',type:'YELLOW'},{text:'数据、因果、底层逻辑的推演',type:'BLUE'},{text:'结果、达成率、下一步 Action',type:'ORANGE'}]},
+  { id:8, scenario:'你最讨厌的同事类型是：', options:[
+    {text:'冷血无情、只看 KPI 不看人的',type:'GREEN'},{text:'搞小圈子、拉帮结派的',type:'YELLOW'},{text:'因循守旧、拒绝任何改变的',type:'BLUE'},{text:'光说不练、永远拖延交付的',type:'ORANGE'}]},
+  { id:9, scenario:'团建你最想组织的活动是：', options:[
+    {text:'深度对话工作坊，大家敞开心扉',type:'GREEN'},{text:'家庭式聚餐，所有人都参与',type:'YELLOW'},{text:'战略沙盘推演，头脑风暴未来三年',type:'BLUE'},{text:'竞技比赛，有排名有奖金',type:'ORANGE'}]},
+  { id:10, scenario:'做决策时，你最依赖的是：', options:[
+    {text:'我的初心和价值观',type:'GREEN'},{text:'过往经验和团队共识',type:'YELLOW'},{text:'数据模型和因果推演',type:'BLUE'},{text:'ROI 和可量化的成功指标',type:'ORANGE'}]},
+  { id:11, scenario:'你最常挂在嘴边的话是：', options:[
+    {text:'「你觉得呢？我想听听你的感受。」',type:'GREEN'},{text:'「大家都是一家人，别伤了和气。」',type:'YELLOW'},{text:'「这背后的底层逻辑是什么？」',type:'BLUE'},{text:'「别讲理由，我只要结果。」',type:'ORANGE'}]},
+  { id:12, scenario:'别人请你帮忙，你的本能反应：', options:[
+    {text:'好啊好啊，能帮就帮，不忍心拒绝',type:'GREEN'},{text:'看看大家什么意见，我都行',type:'YELLOW'},{text:'先问清楚为什么要做、目标是什么',type:'BLUE'},{text:'直接问要什么、什么时候要',type:'ORANGE'}]},
+  { id:13, scenario:'理想中的领导画像是：', options:[
+    {text:'像导师一样温暖、托举每一个人',type:'GREEN'},{text:'像大家长一样，让所有人有归属感',type:'YELLOW'},{text:'像战略家一样，带大家看清未来',type:'BLUE'},{text:'像将军一样，雷厉风行带队打胜仗',type:'ORANGE'}]},
+  { id:14, scenario:'看到新员工不适应，你会：', options:[
+    {text:'私下找 Ta 谈心，了解 Ta 的真实困扰',type:'GREEN'},{text:'主动带 Ta 吃饭、融入集体',type:'YELLOW'},{text:'帮 Ta 梳理岗位的核心逻辑和方法论',type:'BLUE'},{text:'给 Ta 清晰的 SOP 和考核标准',type:'ORANGE'}]},
+  { id:15, scenario:'公司要变革，你的立场更接近：', options:[
+    {text:'担心员工被牺牲，先想怎么保护人',type:'GREEN'},{text:'希望平稳过渡，不要撕裂团队',type:'YELLOW'},{text:'强烈支持，旧模式早该被颠覆了',type:'BLUE'},{text:'看 KPI，只要能更高效就推',type:'ORANGE'}]},
+  { id:16, scenario:'一天结束，让你最有成就感的是：', options:[
+    {text:'今天真诚帮到了某个人',type:'GREEN'},{text:'团队氛围比昨天更和谐了',type:'YELLOW'},{text:'想清楚了一个困扰已久的难题',type:'BLUE'},{text:'把今天的 Todo 全部勾完了',type:'ORANGE'}]},
+  { id:17, scenario:'客户突然临时变更需求，你的第一反应：', options:[
+    {text:'先安抚客户情绪，理解 Ta 的真实顾虑',type:'GREEN'},{text:'召集相关同事一起讨论怎么平稳应对',type:'YELLOW'},{text:'复盘需求逻辑，看变更背后有没有更优解',type:'BLUE'},{text:'评估工时和成本，立刻给出新报价和节点',type:'ORANGE'}]},
+  { id:18, scenario:'周末加班，你最能接受的理由是：', options:[
+    {text:'团队里有人扛不住，我得去搭把手',type:'GREEN'},{text:'大家都在拼，我不想掉队',type:'YELLOW'},{text:'这事儿能让我搞懂一个新领域',type:'BLUE'},{text:'做完就能拿到那块奖金 / 那个晋升',type:'ORANGE'}]},
+  { id:19, scenario:'给团队做分享，你最在意：', options:[
+    {text:'每个人有没有被启发、被看见',type:'GREEN'},{text:'现场互动好不好、氛围 high 不 high',type:'YELLOW'},{text:'内容深度够不够、有没有信息增量',type:'BLUE'},{text:'听完大家能不能马上落地行动',type:'ORANGE'}]},
+  { id:20, scenario:'面对一个明显跑偏的项目，你会：', options:[
+    {text:'先了解团队成员卡在哪里、有什么委屈',type:'GREEN'},{text:'开一个圆桌，让所有人把话讲开',type:'YELLOW'},{text:'回到原点，重新审视目标和路径',type:'BLUE'},{text:'立刻砍掉冗余，锁定关键路径强推',type:'ORANGE'}]},
+  { id:21, scenario:'招聘新人，你最看重：', options:[
+    {text:'Ta 是不是有同理心、有温度的人',type:'GREEN'},{text:'Ta 能不能融入我们的团队文化',type:'YELLOW'},{text:'Ta 的认知深度和学习潜力',type:'BLUE'},{text:'Ta 过往的业绩和交付能力',type:'ORANGE'}]},
+  { id:22, scenario:'朋友找你倾诉烦恼，你的反应通常是：', options:[
+    {text:'安静地听，共情 Ta 的感受',type:'GREEN'},{text:'约 Ta 出来吃顿饭，边吃边聊',type:'YELLOW'},{text:'帮 Ta 分析问题的本质和选项',type:'BLUE'},{text:'直接给 Ta 建议：你应该这么做',type:'ORANGE'}]},
+  { id:23, scenario:'开年规划，你最先思考的是：', options:[
+    {text:'今年要让团队的每个人都有成长',type:'GREEN'},{text:'今年怎么把团队的关系拧得更紧',type:'YELLOW'},{text:'今年我们要在战略上做出什么突破',type:'BLUE'},{text:'今年的营收和核心 KPI 数字是多少',type:'ORANGE'}]},
+  { id:24, scenario:'让你彻底崩溃的工作场景是：', options:[
+    {text:'努力付出却被人误解、被人辜负',type:'GREEN'},{text:'团队内讧、有人公开撕破脸',type:'YELLOW'},{text:'被迫做一件毫无逻辑、纯属内耗的事',type:'BLUE'},{text:'事情失控、节点延期、目标没达成',type:'ORANGE'}]}
+];
+
+const CONTENT_DB = {
+  GREEN:{key:'GREEN',name:'绿色 · 培养型',subtitle:'Cultivating',quadrant:'左上',jung:'NF (直觉 + 情感)',tags:['全队的「情感粘合剂」','核心价值观的「灯塔捍卫者」'],portrait:'天然关注人。觉得事情做再大、利润再高，若伤了感情、背离了初心，就毫无意义。',drive:'渴望被理解、被真诚尊重；抗拒为了短期利益背叛初心、抗拒内卷与冷漠。',highlights:['深度倾听：开会所有人都在吵数据，Ta 第一个敏锐捕捉到伙伴受挫的微表情并给予关怀。','价值共鸣：遭遇瓶颈时，不靠严厉考核，而是通过重温「为什么出发」点燃全队自驱力。','习惯赞美：常常把「你太棒了」、「有你真好」挂在嘴边，真诚发现微小闪光点。','容错空间：事情办砸时第一反应不是追责，而是问「你还好吗？我们一起面对」。'],blindspot:'因过度害怕伤害感情，面临高压时陷入「讨好与回避」黑洞，不敢拒绝，导致烂好人主义。',breakthrough:'温柔过度往往是另一种残忍。及时的建设性反馈才是对长远感情最大的保护。',ambr:{a:'从盯着「别人开不开心」转移一部分到「客观底线与目标」。',m:'从「发生冲突会破坏关系」转为「健康冲突是高质量关系的催化剂」。',b:'练习有边界的拒绝；赞美的同时，清晰表达对效率的刚性要求。',r:'打造有温度且具备硬核战斗力的团队。'},partner:'橙色 · 指导型 (ST)。绿色有温度缺狠劲，橙色是铁血结果捍卫者，两人结合即「有爱、有结果」。',mantra:'「你觉得呢？我想听听你的感受……」、「有你真好！」',trigger:'「别谈感情，我只要结果。」',manual:{do:['先处理心情再处理事情；分派任务时探讨其背后的长远意义与价值。'],dont:['绝不能当众进行冷冰冰的公开指责；不要指望 Ta 主动在会议上挑起冲突。']},color:'#4ade80'},
+  YELLOW:{key:'YELLOW',name:'黄色 · 包容型',subtitle:'Including',quadrant:'左下',jung:'SF (感觉 + 情感)',tags:['团队的「无差别连接者」','办公室的「家庭氛围营造大师」'],portrait:'把「我们」看得比「我」重要。无法忍受排他、搞小圈子。能让任何边缘人感受到被关注。',drive:'渴望被团队全面接纳、建立安全和谐的隶属关系；抗拒四分五裂与缺乏人情味的制度。',highlights:['极度包容：面对再奇葩的想法，也会微微一笑说：「这个视角很有意思，让我们换个角度思考。」','打破隔阂：新人入职，最先主动带新员工吃午饭、熟悉环境、融入集体的绝对是 Ta。','平息内耗：部门间发生擦枪走火时，习惯通过下午茶或私下组局，在轻松氛围中让双方握手言和。','关注公平：极其心细地照顾到那些默默做脏活累活却不爱出风头的边缘员工，确保荣誉不被落下。'],blindspot:'极度害怕被孤立，面临高压时沦为「无原则的退让者」，和稀泥搞折中，劣币驱逐良币。',breakthrough:'真正的包容是有底线的包容。敢于拉下面子解决原则问题，才是对集体最大的负责。',ambr:{a:'从「大家表面开不开心」转移到「团队整体的进化与长期利益」。',m:'从「得罪人会失去安全感」转为「有原则的拒绝能赢得更高级、更持久的尊重」。',b:'订立人际边界，学会说「这件事在规则内不可以，但我很理解你的难处」。',r:'形成基于原则与高级信任的高效合作场域。'},partner:'蓝色 · 展望型 (NT)。黄色易陷入眼前的关系内耗缺远见，蓝色满脑子是宏大未来，二者结合让宏大蓝图具备人性化的温度。',mantra:'「大家都是一家人，别伤了和气。」、「我都行，看大家的意见。」',trigger:'「这是高层定的，你们按说的做就行，别问原因。」',manual:{do:['夸奖 Ta「为团队做出了多大的凝聚力贡献」；做战略调整前务必提前打招呼。'],dont:['严禁在 Ta 面前拉帮结派搞派系斗争；绝对不要让黄色去执行「开除员工」等扮演黑脸恶人的工作。']},color:'#facc15'},
+  BLUE:{key:'BLUE',name:'蓝色 · 展望型',subtitle:'Visioning',quadrant:'右上',jung:'NT (直觉 + 逻辑)',tags:['战略层面的「破局远见者」','从不妥协的「逻辑异教徒」'],portrait:'永远看「明天」的人。重复昨天的成功毫无诱惑力，对平庸天然免疫，唯一目的就是带领组织不断破局。',drive:'渴望智力上的被认可、拥有重构未来的自主权；抗拒短视、机械重复及拍脑袋的无逻辑决策。',highlights:['战略破局：行业陷入红海价格战时，能够跳出乱局开辟第二曲线，指出长远生路。','逻辑质询：在全队盲目乐观、跟风某个方案时，冷静地抛出几个直击核心 Bug 的理性问题。','拥抱变革：变革的天然发动机，一旦发现旧有技术或业务落后，毫不留情推进转型，无惧阵痛。','抽象思维：极擅长建模。复杂的商业现状在 Ta 手里能被迅速浓缩成一张极简的商业画布或战略风洞图。'],blindspot:'当别人跟不上 Ta 的思维速度时，极易沦为「高傲的独裁者」，变得自负、毒舌、开启冷暴力，导致没人敢说真话。',breakthrough:'你一个人的远见，不是团队的终点。学会弯下腰，用别人听得懂的语言解释愿景。',ambr:{a:'从「我的逻辑是否无懈可击」转移到「成员的心理承载力与执行速度」。',m:'从「听不懂的人都愚蠢」转为「无法让别人理解的远见，就是无效的远见」。',b:'表达不同意见前克制批判欲，学习使用「是的……同时，如果我们换个角度……」的柔性句式。',r:'宏大愿景不再孤芳自赏，落地成为全队听得懂、愿意跟的集体战略。'},partner:'黄色 · 包容型 (SF)。蓝色冷酷孤傲易成孤家寡人，黄色是人际纽带，结合即「拥有蓝色的战略大脑，兼具黄色的民心所向」。',mantra:'「这背后的底层逻辑是什么？」、「请用数据说话，别谈感觉。」',trigger:'「公司以前一直这样，没必要变。」',manual:{do:['汇报工作抛弃情绪修饰，直接拿因果逻辑和事实说话；肯定 Ta 独特的独创性视角。'],dont:['严禁滔滔不绝讲没有逻辑的废话；绝对不要指望蓝色去安抚员工的敏感小情绪。']},color:'#3b82f6'},
+  ORANGE:{key:'ORANGE',name:'橙色 · 指导型',subtitle:'Directing',quadrant:'右下',jung:'ST (感觉 + 逻辑)',tags:['死磕结果的「铁血捍卫者」','流程与秩序的「终极守护神」'],portrait:'把交付当成生命。过程再感人、PPT 再好看，没有拿到实实在在的利润和按时交付，就是零。破障坦克。',drive:'渴望绝对的确定性与掌控感；抗拒计划延期、界限模糊以及光说不练的嘴炮侠。',highlights:['强力交付：项目临近 Deadline 一团乱麻时，能把任务拆解到小时，抗住压力亲自上阵死磕到底。','流程订立：面对散漫无序团队，能迅速整出清晰的周报、SOP、考核指标，让整台机器疯狂运转。','成本控制：在资源和资金管理上是一等一的铁公鸡，极度精准地计算每一笔开支的 ROI。','直面危机：大客户投诉或业务暴雷时，绝不推诿逃避，第一时间顶上去止损，极具职业担当。'],blindspot:'项目失控时会陷入「微观管理 (Micro-management)」黑洞，变成冷酷监控器，剥夺下属自主权。',breakthrough:'管得越死，结果死得越快。卓越的领导力来自激活人而非监控人，给下属合理试错空间。',ambr:{a:'从「今天的事有没有百分百按我的标准完成」转到「员工的成长空间与组织的长期健康度」。',m:'从「盯着才放心」转为「给团队授权和试错空间，是更高级、长效的交付路径」。',b:'抓大放小，只定义清晰的交付标准和里程碑检查点，把过程自主权还给执行层。',r:'领导者从无休止的救火中抽身，团队具备自运转的强悍作战力。'},partner:'绿色 · 培养型 (NF)。橙色为拿结果易变成推土机伤害感情，导致高流失；结合绿色即「用绿色的爱滋养土壤，用橙色的铁腕夺取胜利」。',mantra:'「别讲理由，我只要结果。」、「具体 Deadline 是几点？」',trigger:'「这个事情我觉得大概、差不多能搞定吧……」',manual:{do:['结论前置，先说结果再说原因；向 Ta 求助时务必带着 AB 方案去请 Ta 做单选题。'],dont:['答应 Ta 的交付节点只能提前绝不能延期；在 Ta 进入战斗死死磕项目时，不要拉着 Ta 聊感情问题。']},color:'#f97316'}
+};
+const TYPE_ORDER = ['GREEN','BLUE','YELLOW','ORANGE'];
+const KEY_MAP = {GREEN:'green',YELLOW:'yellow',BLUE:'blue',ORANGE:'orange'};
+
+// ========== UTILS ==========
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)}
+function getFromStore(k){try{return JSON.parse(localStorage.getItem('4d_'+k))}catch(e){return null}}
+function setToStore(k,v){localStorage.setItem('4d_'+k,JSON.stringify(v))}
+function navTo(name){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+name).classList.add('active');window.scrollTo(0,0);
+  if(name==='mine')renderMine();if(name==='history')renderHistory();}
+function formatDate(d){return new Date(d).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}
+function genReportId(){const n=new Date();const s=''+n.getFullYear()+String(n.getMonth()+1).padStart(2,'0')+String(n.getDate()).padStart(2,'0');return 'R'+s+Math.floor(Math.random()*900+100)}
+function calculateScores(answers){
+  const c={GREEN:0,YELLOW:0,BLUE:0,ORANGE:0};
+  answers.forEach(a=>{if(c.hasOwnProperty(a))c[a]+=1});
+  const t=c.GREEN+c.YELLOW+c.BLUE+c.ORANGE||1;
+  const p={green:Math.round(c.GREEN/t*100),yellow:Math.round(c.YELLOW/t*100),blue:Math.round(c.BLUE/t*100),orange:Math.round(c.ORANGE/t*100)};
+  const max=Math.max(p.green,p.yellow,p.blue,p.orange);
+  let primary='GREEN';
+  if(p.green===max)primary='GREEN';else if(p.blue===max)primary='BLUE';else if(p.yellow===max)primary='YELLOW';else primary='ORANGE';
+  return {...p,primary};
+}
+
+// ========== AUTH ==========
+function doRegister(){
+  const name=document.getElementById('reg-name').value.trim();
+  const phone=document.getElementById('reg-phone').value.trim();
+  if(!name||!phone){showToast('请填写姓名和手机号');return}
+  const user={name,phone,company:document.getElementById('reg-company').value.trim(),role:document.getElementById('reg-role').value.trim(),registeredAt:new Date().toISOString()};
+  setToStore('user',user);
+  startAssessment();
+}
+function doLogout(){localStorage.removeItem('4d_user');navTo('home');}
+function isLoggedIn(){return !!getFromStore('user')}
+
+// ========== ASSESSMENT LOGIC ==========
+let quizState={shuffled:[],index:0,answers:[]};
+
+function startAssessment(){
+  if(!isLoggedIn()){navTo('register');return}
+  quizState={shuffled:QUESTIONS.map(q=>({...q,options:shuffle(q.options)})),index:0,answers:[]};
+  navTo('assessment');
+  renderQuestion();
+}
+function renderQuestion(){
+  if(quizState.index>=quizState.shuffled.length){finishQuiz();return}
+  const q=quizState.shuffled[quizState.index];
+  const letters='ABCD';
+  const pct=Math.round((quizState.index/quizState.shuffled.length)*100);
+  document.getElementById('quiz-counter').textContent=(quizState.index+1)+' / '+quizState.shuffled.length;
+  document.getElementById('quiz-progress').style.width=pct+'%';
+  let h='<div class="quiz-card">';
+  h+='<span class="quiz-label">Scenario · 情境</span>';
+  h+='<h2 class="quiz-scenario">'+q.scenario+'</h2>';
+  q.options.forEach((opt,i)=>{
+    h+='<div class="quiz-option" onclick="selectOption('+i+')">';
+    h+='<div class="opt-letter">'+letters[i]+'</div>';
+    h+='<span class="opt-text">'+opt.text+'</span></div>';
+  });
+  h+='</div>';
+  document.getElementById('quiz-body').innerHTML=h;
+}
+function selectOption(idx){
+  const type=quizState.shuffled[quizState.index].options[idx].type;
+  quizState.answers[quizState.index]=type;
+  quizState.index++;
+  if(quizState.index>=quizState.shuffled.length){finishQuiz();return}
+  renderQuestion();
+}
+function prevQuestion(){
+  if(quizState.index<=0)return;
+  quizState.index--;
+  renderQuestion();
+}
+function finishQuiz(){
+  const result=calculateScores(quizState.answers);
+  const reportId=genReportId();
+  const record={scores:result,primaryType:result.primary,reportId,createdAt:new Date().toISOString()};
+  let hist=getFromStore('history')||[];
+  hist.unshift(record);
+  if(hist.length>50)hist.length=50;
+  setToStore('history',hist);
+  renderResult(result,record);
+}
+
+// ========== RESULT PAGE ==========
+function renderResult(result,record){
+  navTo('result');
+  const c=CONTENT_DB[result.primary];
+  const mkCell=function(type,key,label,pct,isPrimary){
+    let cls='matrix-cell '+key;
+    if(isPrimary)cls+=' primary';
+    let crown='';if(isPrimary)crown='<div class="crown">👑</div>';
+    return '<div class="'+cls+'">'+crown+'<div class="cell-type">'+type+'</div><div class="cell-name">'+label+'</div><div class="cell-pct">'+pct+'%</div></div>';
+  };
+  let h='<div class="result-header">';
+  h+='<h2>Your 4D Energy Matrix</h2><p class="type-name">你的主导色彩</p>';
+  h+='<div class="result-type-badge" style="background:'+c.color+';color:#1d1d1f">'+c.name+' · '+c.subtitle+'</div></div>';
+  h+='<div class="matrix-section"><h3 class="matrix-title">4D 水位矩阵</h3><p class="matrix-subtitle">分数越高 = 该维度越倾向</p>';
+  h+='<div class="matrix-grid">';
+  h+=mkCell('GREEN 培养','green','GREEN',result.green,result.primary==='GREEN');
+  h+=mkCell('BLUE 展望','blue','BLUE',result.blue,result.primary==='BLUE');
+  h+=mkCell('YELLOW 包容','yellow','YELLOW',result.yellow,result.primary==='YELLOW');
+  h+=mkCell('ORANGE 指导','orange','ORANGE',result.orange,result.primary==='ORANGE');
+  h+='</div></div>';
+  // Profile
+  h+='<div class="profile-section"><h3>'+c.name+'</h3><p class="subtitle">'+c.jung+' · '+c.tags.join(' / ')+'</p>';
+  h+='<div class="row-label">天性肖像</div><div class="row-value">'+c.portrait+'</div>';
+  h+='<div class="row-label">核心驱动力</div><div class="row-value">'+c.drive+'</div>';
+  h+='<div class="row-label">天赋闪光点</div><ul class="highlight-list">'+c.highlights.map(s=>'<li>'+s+'</li>').join('')+'</ul>';
+  h+='<div class="row-label">压力黑洞</div><div class="row-value">'+c.blindspot+'</div>';
+  h+='<div class="row-label">突破锦囊</div><div class="row-value">'+c.breakthrough+'</div>';
+  h+='<div class="row-label">AMBR 修炼法</div><div class="row-value">A: '+c.ambr.a+'<br>M: '+c.ambr.m+'<br>B: '+c.ambr.b+'<br>R: '+c.ambr.r+'</div>';
+  h+='<div class="row-label">最佳搭档</div><div class="row-value">'+c.partner+'</div>';
+  h+='<div class="row-label">口头禅</div><div class="row-value">'+c.mantra+'</div>';
+  h+='<div class="row-label">雷区</div><div class="row-value">'+c.trigger+'</div>';
+  h+='</div>';
+  // Footer
+  h+='<div class="profile-section" style="text-align:center"><p style="font-size:13px;color:#86868b;margin-bottom:12px">报告生成时间 · '+formatDate(record.createdAt)+'</p><p style="font-size:12px;color:#aeaeb2">#'+record.reportId+'</p></div>';
+  h+='<div class="qr-section"><p class="qr-title">关注飞昂叩启</p><p class="qr-subtitle">扫码关注，获得更多学习资讯</p>';
+  h+='<div class="qr-row"><div class="qr-item"><img src="/images/official-qr.jpg" alt="微信公众号"><span class="qr-label">微信公众号</span></div><div class="qr-item"><img src="/images/video-qr.jpg" alt="视频号"><span class="qr-label">视频号</span></div></div></div>';
+  h+='<div style="padding:0 20px 32px;display:flex;flex-direction:column;gap:12px">';
+  h+='<button class="btn btn-primary btn-block" onclick="startAssessment()">再测一次</button>';
+  h+='<button class="btn btn-outline btn-block" onclick="navTo(\'history\')">查看历史</button>';
+  h+='<button class="btn btn-outline btn-block" onclick="navTo(\'mine\')">我的</button>';
+  h+='<button class="btn btn-outline btn-block" onclick="navTo(\'home\')">返回首页</button>';
+  h+='</div>';
+  document.getElementById('result-content').innerHTML=h;
+}
+
+// ========== HISTORY PAGE ==========
+function renderHistory(){
+  const hist=getFromStore('history')||[];
+  const el=document.getElementById('history-list');
+  if(hist.length===0){el.innerHTML='<div class="history-empty"><p>暂无测评记录</p><button class="btn btn-primary" style="margin-top:20px" onclick="startAssessment()">开始测评</button></div>';return}
+  let h='';
+  hist.forEach((r,i)=>{
+    const c=CONTENT_DB[r.primaryType]||{};
+    h+='<div class="history-item" onclick="renderResult('+JSON.stringify(r.scores).replace(/"/g,"'")+','+JSON.stringify(r).replace(/"/g,"'")+')">';
+    h+='<div><div class="history-type" style="color:'+(c.color||'#ccc')+'">'+(c.name||'未知')+'</div><div class="history-date">'+formatDate(r.createdAt)+'</div></div>';
+    h+='<span style="font-size:24px;opacity:.3">→</span></div>';
+  });
+  el.innerHTML=h;
+}
+
+// ========== MINE PAGE ==========
+function renderMine(){
+  const user=getFromStore('user');
+  if(user){
+    document.getElementById('mine-name').textContent=user.name;
+    document.getElementById('mine-info').textContent=user.phone+(user.company?' · '+user.company:'');
+    document.getElementById('mine-avatar').textContent=user.name.charAt(0);
+  }
+}
+
+// ========== INIT ==========
+document.addEventListener('DOMContentLoaded',()=>{
+  // If logged in, go straight to assessment from home
+  document.querySelectorAll('[onclick*="startAssessment"]').forEach(el=>{
+    const orig=el.getAttribute('onclick');
+    if(orig==='startAssessment()'&&!isLoggedIn()){el.onclick=()=>navTo('register')}
+  });
+});
+</script>
+</body>
+</html>
